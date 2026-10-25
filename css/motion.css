@@ -1,0 +1,15 @@
+/* ================= REDUCED MOTION ================= */
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+}
+
+/* Fallback: if the animation library can't load (blocked CDN, offline), show content immediately instead of leaving it invisible */
+html.no-gsap .reveal,
+html.no-gsap .hero-title .line span,
+html.no-gsap #heroPhoto,
+html.no-gsap .hero-sub,
+html.no-gsap .btn-row .btn,
+html.no-gsap .hero-tags,
+html.no-gsap #navbarWrap{
+  opacity:1 !important; transform:none !important; filter:none !important;
+}
