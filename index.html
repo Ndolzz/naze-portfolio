@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nendi | Portofolio dan Proyek Software</title>
+<meta name="description" content="Kenali Nendi, pengembang software yang sedang belajar AI. Lihat sertifikat, teknologi yang dipakai, dan proyeknya di GitHub.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/sections.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/motion.css">
+</head>
+<body>
+
+<div class="backdrop"></div>
+<div class="grid-layer"></div>
+<div class="noise-layer"></div>
+<div class="code-fragments" id="codeFragments"></div>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ========== NAVBAR ========== -->
+<div class="navbar-wrap" id="navbarWrap">
+<nav class="navbar" id="navbar">
+  <div class="nav-logo">NAZE<span>/NDOLZZ</span></div>
+  <ul class="nav-links">
+    <li><a href="#certificates" data-cursor="view">SERTIFIKAT</a></li>
+    <li><a href="#about" data-cursor="view">TENTANG</a></li>
+    <li><a href="#stack" data-cursor="view">TEKNOLOGI</a></li>
+    <li><a href="https://github.com/Ndolzz" target="_blank" rel="noopener" data-cursor="open">GITHUB</a></li>
+    <li><a href="#contact" data-cursor="view">KONTAK</a></li>
+  </ul>
+  <button class="nav-toggle mono" aria-label="buka menu">≡</button>
+</nav>
+</div>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-term mono" id="heroTerm"></div>
+      <h1 class="hero-title display-xl" id="heroTitle">
+        <span class="line"><span>AKU NENDI,</span></span>
+        <span class="line"><span class="grad-text">SUKA MEMBUAT</span></span>
+        <span class="line"><span>DENGAN KODE.</span></span>
+      </h1>
+      <p class="hero-sub">Aku tertarik pada pengembangan software dan AI. Di sini aku berbagi proyek yang sedang kukerjakan, hal yang kupelajari, dan eksperimen yang kubuat.</p>
+      <div class="btn-row">
+        <a href="#certificates" class="btn btn-primary" data-cursor="view">SERTIFIKAT</a>
+        <a href="https://github.com/Ndolzz" target="_blank" rel="noopener" class="btn btn-ghost" data-cursor="open">GITHUB ↗</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-photo-wrap reveal" id="heroPhoto">
+        <img src="hero-photo.jpg" alt="Foto Nendi, pengembang software" loading="eager">
+      </div>
+      <div class="hero-tags t1">PERAN: PENGEMBANG</div>
+      <div class="hero-tags t2">FOKUS: AI / WEB</div>
+      <div class="hero-tags t3">STATUS: SEDANG MEMBANGUN</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MARQUEE 1 ========== -->
+<div class="marquee-row">
+  <div class="marquee-track" id="marquee1">
+    <span>KODE <em>/</em> AI <em>/</em> WEB <em>/</em> MEMBANGUN <em>/</em> BERKREASI <em>/</em> OPEN SOURCE <em>/</em> PROYEK DIGITAL <em>/</em></span>
+    <span>KODE <em>/</em> AI <em>/</em> WEB <em>/</em> MEMBANGUN <em>/</em> BERKREASI <em>/</em> OPEN SOURCE <em>/</em> PROYEK DIGITAL <em>/</em></span>
+  </div>
+</div>
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="section-pad">
+  <div class="wrap about-grid">
+    <div class="about-photo reveal">
+      <img src="formal-photo.jpg" alt="Foto Nendi" loading="lazy">
+      <span class="frame-label mono">NENDI · PENGEMBANG</span>
+    </div>
+    <div>
+      <div class="kicker">KENALAN DENGAN NENDI</div>
+      <h2 class="display-lg reveal">Belajar, membuat,<br>lalu <span class="grad-text">memperbaiki.</span></h2>
+      <div class="about-copy reveal">
+        <p>Aku Nendi, orang yang senang menulis kode dan mengubah ide menjadi software yang bisa dipakai.</p>
+        <p>Dari aplikasi web sampai eksperimen AI, setiap proyek adalah bagian dari proses belajarku. Aku membuat, mencoba, lalu memperbaikinya sedikit demi sedikit.</p>
+      </div>
+      <div class="about-code reveal">
+<span class="kw">const</span> developer = {<br>
+&nbsp;&nbsp;name: <span class="str">"Nendi"</span>,<br>
+&nbsp;&nbsp;alias: <span class="str">"Ndolzz"</span>,<br>
+&nbsp;&nbsp;focus: [<span class="str">"AI"</span>, <span class="str">"Web"</span>, <span class="str">"Proyek"</span>],<br>
+&nbsp;&nbsp;status: <span class="str">"sedang membangun"</span> <span class="com">// selalu</span><br>
+};
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MARQUEE 2 ========== -->
+<div class="marquee-row">
+  <div class="marquee-track rev" id="marquee2">
+    <span>REACT <em>·</em> TYPESCRIPT <em>·</em> SUPABASE <em>·</em> VERCEL <em>·</em> TAILWIND <em>·</em> VITE <em>·</em> PWA <em>·</em></span>
+    <span>REACT <em>·</em> TYPESCRIPT <em>·</em> SUPABASE <em>·</em> VERCEL <em>·</em> TAILWIND <em>·</em> VITE <em>·</em> PWA <em>·</em></span>
+  </div>
+</div>
+
+<!-- ========== CERTIFICATES ========== -->
+<section id="certificates" class="section-pad">
+  <div class="wrap">
+    <div class="kicker">SERTIFIKAT DICODING INDONESIA</div>
+    <h2 class="display-lg reveal cert-title">Sertifikat</h2>
+    <div class="cert-list">
+
+      <!-- CERTIFICATE 01 -->
+      <article class="cert-item reveal">
+        <div class="cert-body">
+          <div class="cert-head">
+            <span class="cert-num mono">01</span>
+            <span class="cert-cat mono">Dicoding Indonesia · Kompetensi Kelulusan</span>
+          </div>
+          <h3 class="cert-name">Belajar Dasar AI</h3>
+          <p class="cert-desc">Belajar konsep dasar kecerdasan buatan, cara data dipakai untuk AI, pengantar machine learning dan deep learning, ditutup dengan ujian akhir.</p>
+          <div class="cert-meta">
+            <span class="chip">DICODING</span><span class="chip">10 JAM</span><span class="chip">UJIAN AKHIR</span>
+          </div>
+        </div>
+        <div class="cert-credential">
+          <span class="cred-label mono">ID KREDENSIAL</span>
+          <span class="cred-id mono">6RPNGR5N8Z2M</span>
+          <dl class="cred-rows mono">
+            <div><dt>DITERBITKAN</dt><dd>22 OKT 2025</dd></div>
+            <div><dt>BERLAKU SAMPAI</dt><dd>22 OKT 2028</dd></div>
+          </dl>
+          <a href="https://www.dicoding.com/certificates/6RPNGR5N8Z2M" target="_blank" rel="noopener" class="cert-verify" data-cursor="open">LIHAT SERTIFIKAT ↗</a>
+        </div>
+      </article>
+
+      <!-- CERTIFICATE 02 -->
+      <article class="cert-item reveal">
+        <div class="cert-body">
+          <div class="cert-head">
+            <span class="cert-num mono">02</span>
+            <span class="cert-cat mono">Dicoding Indonesia · Kompetensi Kelulusan</span>
+          </div>
+          <h3 class="cert-name">Belajar Dasar Structured Query Language (SQL)</h3>
+          <p class="cert-desc">Belajar dasar SQL: mengenal basis data relasional dan DBMS, latihan perintah DDL dan DML, serta query untuk mengolah data.</p>
+          <div class="cert-meta">
+            <span class="chip">DICODING</span><span class="chip">11 JAM</span><span class="chip">UJIAN AKHIR</span>
+          </div>
+        </div>
+        <div class="cert-credential">
+          <span class="cred-label mono">ID KREDENSIAL</span>
+          <span class="cred-id mono">6RPNO40Y5X2M</span>
+          <dl class="cred-rows mono">
+            <div><dt>DITERBITKAN</dt><dd>22 SEP 2026</dd></div>
+            <div><dt>BERLAKU SAMPAI</dt><dd>22 SEP 2029</dd></div>
+          </dl>
+          <a href="https://www.dicoding.com/certificates/6RPNO40Y5X2M" target="_blank" rel="noopener" class="cert-verify" data-cursor="open">LIHAT SERTIFIKAT ↗</a>
+        </div>
+      </article>
+
+      <!-- CERTIFICATE 03 -->
+      <article class="cert-item reveal">
+        <div class="cert-body">
+          <div class="cert-head">
+            <span class="cert-num mono">03</span>
+            <span class="cert-cat mono">Dicoding Indonesia · Kompetensi Kelulusan</span>
+          </div>
+          <h3 class="cert-name">Spec-Driven Development dengan Kiro</h3>
+          <p class="cert-desc">Belajar mengembangkan software berbasis spesifikasi dengan Kiro, mulai dari menyusun kebutuhan, rancangan, sampai daftar tugas agar pengerjaan lebih terarah.</p>
+          <div class="cert-meta">
+            <span class="chip">DICODING</span><span class="chip">10 JAM</span><span class="chip">UJIAN AKHIR</span>
+          </div>
+        </div>
+        <div class="cert-credential">
+          <span class="cred-label mono">ID KREDENSIAL</span>
+          <span class="cred-id mono">JMZVL1JMQXN9</span>
+          <dl class="cred-rows mono">
+            <div><dt>DITERBITKAN</dt><dd>22 SEP 2026</dd></div>
+            <div><dt>BERLAKU SAMPAI</dt><dd>22 SEP 2029</dd></div>
+          </dl>
+          <a href="https://www.dicoding.com/certificates/JMZVL1JMQXN9" target="_blank" rel="noopener" class="cert-verify" data-cursor="open">LIHAT SERTIFIKAT ↗</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+<!-- ========== STACK ========== -->
+<section id="stack" class="section-pad">
+  <div class="wrap">
+    <div class="kicker">TEKNOLOGI</div>
+    <h2 class="display-lg reveal">Teknologi yang Kupakai</h2>
+    <div class="stack-list">
+      <div class="stack-item reveal"><span class="name">React</span><span class="role mono">ANTARMUKA</span></div>
+      <div class="stack-item reveal"><span class="name">TypeScript</span><span class="role mono">BAHASA PEMROGRAMAN</span></div>
+      <div class="stack-item reveal"><span class="name">JavaScript</span><span class="role mono">BAHASA PEMROGRAMAN</span></div>
+      <div class="stack-item reveal"><span class="name">Tailwind CSS</span><span class="role mono">PENATAAN TAMPILAN</span></div>
+      <div class="stack-item reveal"><span class="name">Vite</span><span class="role mono">ALAT PENGEMBANGAN</span></div>
+      <div class="stack-item reveal"><span class="name">Supabase</span><span class="role mono">BACKEND</span></div>
+      <div class="stack-item reveal"><span class="name">Vercel</span><span class="role mono">PUBLIKASI APLIKASI</span></div>
+      <div class="stack-item reveal"><span class="name">GitHub Actions</span><span class="role mono">CI / CD</span></div>
+      <div class="stack-item reveal"><span class="name">PWA</span><span class="role mono">PLATFORM</span></div>
+      <div class="stack-item reveal"><span class="name">AI APIs</span><span class="role mono">INTEGRASI</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GITHUB ========== -->
+<section class="section-pad">
+  <div class="wrap">
+    <div class="kicker">KODE TERBUKA.</div>
+    <h2 class="display-lg reveal gh-title">@Ndolzz di GitHub</h2>
+    <div class="github-panel reveal">
+      <div>
+        <div class="gh-id">
+          <div class="gh-avatar-ring mono">N</div>
+          <div>
+            <div class="gh-name">Ndolzz</div>
+            <div class="gh-handle mono">github.com/Ndolzz</div>
+          </div>
+        </div>
+        <p class="gh-copy">Proyek yang kukerjakan bisa kamu lihat di GitHub. Statistik di bawah diambil langsung dari GitHub API setiap kali halaman ini dibuka.</p>
+        <div class="gh-stats">
+          <div class="gh-stat"><b id="statRepos">8</b><span>REPOSITORI</span></div>
+          <div class="gh-stat"><b id="statFollowers">…</b><span>PENGIKUT</span></div>
+          <div class="gh-stat"><b id="statStars">…</b><span>TOTAL BINTANG</span></div>
+        </div>
+        <div class="btn-row">
+          <a href="https://github.com/Ndolzz" target="_blank" rel="noopener" class="btn btn-ghost" data-cursor="open">LIHAT PROFIL ↗</a>
+        </div>
+      </div>
+      <div class="repo-grid" id="repoGrid">
+        <div class="repo-cell"><span class="rname">naze.ai</span><span class="lang-dot"></span>JavaScript</div>
+        <div class="repo-cell"><span class="rname">naze-dev-studio-</span><span class="lang-dot"></span>TypeScript</div>
+        <div class="repo-cell"><span class="rname">nazes-memories</span><span class="lang-dot"></span>TypeScript</div>
+        <div class="repo-cell"><span class="rname">omnifile</span><span class="lang-dot"></span>JavaScript</div>
+        <div class="repo-cell"><span class="rname">naze.maps</span><span class="lang-dot"></span>HTML</div>
+        <div class="repo-cell"><span class="rname">naze.drive</span><span class="lang-dot"></span>JavaScript</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TERMINAL ========== -->
+<section class="term-section section-pad">
+  <div class="wrap">
+    <div class="term-window reveal">
+      <div class="term-bar"><i></i><i></i><i></i><span>nendi@portofolio: ~</span></div>
+      <div class="term-body" id="termBody"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="section-pad contact-section">
+  <div class="contact-bg"></div>
+  <div class="wrap contact-title">
+    <div class="kicker">HUBUNGI AKU</div>
+    <h2 class="display-xl reveal">PUNYA<br><span class="grad-text">PERTANYAAN</span><br>ATAU IDE?</h2>
+    <div class="contact-links">
+      <a href="https://github.com/Ndolzz" target="_blank" rel="noopener" class="magnetic-btn" data-cursor="open"><span class="inner mono">GITHUB ↗</span></a>
+      <a href="#contact" class="magnetic-btn" data-cursor="view"><span class="inner mono">KONTAK ↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-line"></div>
+    <h3 class="footer-big">NAZE</h3>
+    <div class="footer-roles mono">PENGEMBANGAN SOFTWARE · EKSPERIMEN AI · PROYEK DIGITAL</div>
+    <div class="footer-bottom">
+      <span class="mono">NDOLZZ © 2026</span>
+      <div class="footer-social">
+        <a href="https://github.com/Ndolzz" target="_blank" rel="noopener">GITHUB</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/typing.js"></script>
+<script src="js/stats.js"></script>
+<script src="js/animations.js"></script>
+</body>
+</html>
