@@ -52,7 +52,7 @@ for(let i=0;i<14;i++){
 
 
 /* ---------- Active nav link on scroll ---------- */
-const navSections = ['work','about','stack','contact'].map(id=>document.getElementById(id)).filter(Boolean);
+const navSections = ['certificates','about','stack','contact'].map(id=>document.getElementById(id)).filter(Boolean);
 const navLinks = document.querySelectorAll('.nav-links a');
 if(gsapAvailable){
   ScrollTrigger.batch(navSections, {

@@ -1,6 +1,6 @@
 /* ============================================================
    NAZE PORTFOLIO — sections.css
-   About, project index, and stack list.
+   About, certificate index, and stack list.
    ============================================================ */
 
 /* ================= ABOUT ================= */
@@ -70,34 +70,37 @@
 .about-code .str{ color:var(--success); }
 .about-code .com{ color:var(--faint); font-style:italic; }
 
-/* ================= PROJECTS ================= */
-/* Editorial index rows: hairline dividers, asymmetric two-column
-   compositions (a: text left, b: visual left, c: text-forward
-   with a slim spec card). No card grid, no equal columns. */
+/* ================= CERTIFICATES ================= */
+/* Editorial credential index: course summary on the left, a compact
+   credential plate on the right. Verification data is real and links
+   to the issuer's public certificate page. */
 
-#work .wrap:first-of-type{ margin-bottom:clamp(40px, 6vw, 64px); }
+.cert-title{ margin-bottom:clamp(40px, 6vw, 64px); }
 
-.project{
-  border-top:var(--border);
-  padding:clamp(40px, 6vw, 68px) 0;
+.cert-list{ display:flex; flex-direction:column; }
+
+.cert-item{
   display:grid;
-  gap:clamp(24px, 4vw, 44px);
-  align-items:center;
+  grid-template-columns:minmax(0, 1.6fr) minmax(0, 1fr);
+  gap:clamp(24px, 4vw, 56px);
+  padding:clamp(36px, 5vw, 56px) 0;
+  border-top:var(--border);
+  align-items:start;
 }
-.project:last-child{ border-bottom:var(--border); }
+.cert-item:last-child{ border-bottom:var(--border); }
 
-.project-head{
+.cert-head{
   display:flex; align-items:baseline; gap:var(--space-4);
   margin-bottom:var(--space-4);
 }
-.project-num{
+.cert-num{
   font-family:var(--font-mono);
   font-size:.8rem;
   color:var(--accent);
   letter-spacing:.06em;
 }
-.project-num::after{ content:' /'; color:var(--faint); }
-.project-cat{
+.cert-num::after{ content:' /'; color:var(--faint); }
+.cert-cat{
   font-family:var(--font-mono);
   font-size:.66rem;
   letter-spacing:.16em;
@@ -105,43 +108,83 @@
   color:var(--muted);
 }
 
-.project-name{
+.cert-name{
   font-family:var(--font-display);
-  font-size:clamp(1.6rem, 3.4vw, 2.4rem);
+  font-size:clamp(1.5rem, 3vw, 2.2rem);
   font-weight:560;
   letter-spacing:-.01em;
-  line-height:1.1;
+  line-height:1.12;
   margin:0 0 var(--space-3);
   text-wrap:balance;
 }
 
-.project-desc{
+.cert-desc{
   color:var(--muted);
   line-height:1.75;
   max-width:min(58ch, 100%);
-  margin:0 0 var(--space-5, 1.25rem);
+  margin:0 0 var(--space-5);
   text-wrap:pretty;
 }
 
-.project-meta{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:var(--space-5, 1.25rem); }
-.chip{
-  font-family:var(--font-mono);
-  font-size:.64rem;
-  letter-spacing:.08em;
-  color:var(--muted);
-  border:var(--border);
-  border-radius:var(--radius-pill);
-  padding:5px 12px;
-  transition:border-color var(--t-fast), color var(--t-fast);
-}
-.project:hover .chip{ border-color:var(--line-strong); color:var(--ink-soft); }
+.cert-meta{ display:flex; flex-wrap:wrap; gap:8px; }
+.cert-item:hover .chip{ border-color:var(--line-strong); color:var(--ink-soft); }
 
-.project-links{
-  display:flex; gap:var(--space-8);
-  align-items:center;
-  flex-wrap:wrap;
+/* credential plate — light technical panel with registration corners */
+.cert-credential{
+  position:relative;
+  border:var(--border-strong);
+  border-radius:var(--radius-md);
+  background:var(--surface);
+  padding:clamp(20px, 3vw, 28px);
+  display:flex; flex-direction:column; gap:var(--space-3);
+  min-width:0;
+  transition:border-color var(--t-normal), box-shadow var(--t-normal);
 }
-.project-links a{
+.cert-item:hover .cert-credential{
+  border-color:var(--accent);
+  box-shadow:var(--shadow-soft);
+}
+.cert-credential::before,
+.cert-credential::after{
+  content:'';
+  position:absolute;
+  width:10px; height:10px;
+  border-color:var(--faint);
+  border-style:solid;
+  opacity:.7;
+}
+.cert-credential::before{ top:8px; left:8px; border-width:1px 0 0 1px; }
+.cert-credential::after{ bottom:8px; right:8px; border-width:0 1px 1px 0; }
+
+.cred-label{
+  font-size:.6rem;
+  letter-spacing:.16em;
+  color:var(--faint);
+}
+.cred-id{
+  font-size:1rem;
+  font-weight:600;
+  color:var(--accent);
+  letter-spacing:.08em;
+  overflow-wrap:anywhere;
+}
+
+.cred-rows{
+  margin:var(--space-2) 0 0;
+  display:flex; flex-direction:column; gap:6px;
+  font-size:.68rem;
+}
+.cred-rows div{
+  display:flex;
+  justify-content:space-between;
+  gap:var(--space-4);
+}
+.cred-rows dt{ color:var(--faint); letter-spacing:.1em; }
+.cred-rows dd{ margin:0; color:var(--ink-soft); letter-spacing:.04em; text-align:right; }
+
+.cert-verify{
+  margin-top:var(--space-3);
+  align-self:flex-start;
   font-family:var(--font-mono);
   font-size:.72rem;
   letter-spacing:.1em;
@@ -151,7 +194,7 @@
   padding-bottom:3px;
   transition:color var(--t-fast);
 }
-.project-links a::after{
+.cert-verify::after{
   content:'';
   position:absolute; left:0; bottom:0;
   width:100%; height:1px;
@@ -160,88 +203,14 @@
   transform-origin:left;
   transition:transform var(--t-normal) var(--ease);
 }
-.project-links a:hover{ color:var(--accent); }
-.project-links a:hover::after{ transform:scaleX(1); }
-
-.project-status{
-  font-family:var(--font-mono);
-  font-size:.64rem;
-  letter-spacing:.08em;
-  color:var(--faint);
-  margin-left:auto;
-}
-.project-status b{ color:var(--success); font-weight:500; }
-
-/* spec card — light technical panel with registration corners */
-.project-visual{
-  position:relative;
-  border:var(--border-strong);
-  border-radius:var(--radius-md);
-  background:var(--surface);
-  min-height:230px;
-  overflow:hidden;
-  padding:clamp(22px, 3vw, 30px);
-  display:flex; align-items:center; justify-content:center;
-  transition:border-color var(--t-normal), box-shadow var(--t-normal);
-  min-width:0;
-}
-.project:hover .project-visual{
-  border-color:var(--accent);
-  box-shadow:var(--shadow-soft);
-}
-/* registration corner marks — technical drawing detail */
-.project-visual::before,
-.project-visual::after{
-  content:'';
-  position:absolute;
-  width:10px; height:10px;
-  border-color:var(--faint);
-  border-style:solid;
-  opacity:.7;
-}
-.project-visual::before{ top:8px; left:8px; border-width:1px 0 0 1px; }
-.project-visual::after{ bottom:8px; right:8px; border-width:0 1px 1px 0; }
-
-.project-visual .glow{ display:none; } /* retired dark-theme glow */
-.project-visual .bignum{
-  font-family:var(--font-display);
-  font-size:clamp(4rem, 9vw, 7rem);
-  font-weight:400;
-  line-height:1;
-  color:var(--sunken);
-  -webkit-text-stroke:1px var(--line-strong);
-  position:relative; z-index:1;
-  transition:color var(--t-slow);
-}
-.project:hover .project-visual .bignum{ color:var(--accent-wash); }
-.project-visual code{
-  position:relative; z-index:1;
-  font-family:var(--font-mono);
-  font-size:.72rem;
-  line-height:2;
-  color:var(--ink-soft);
-  white-space:pre;
-  overflow-wrap:anywhere;
-}
-
-/* layout variants — asymmetric compositions */
-.project.layout-a{ grid-template-columns:minmax(0, 1.1fr) minmax(0, .9fr); }
-.project.layout-b{ grid-template-columns:minmax(0, .9fr) minmax(0, 1.1fr); }
-.project.layout-b .project-visual{ order:-1; }
-
-/* layout-c: text-forward row with a compact spec card,
-   visually distinct from a/b but same system */
-.project.layout-c{ grid-template-columns:minmax(0, 1.25fr) minmax(0, .75fr); }
-.project.layout-c .project-visual{ min-height:170px; align-self:end; }
-.project.layout-c .project-status{ margin-left:0; width:100%; }
+.cert-verify:hover{ color:var(--accent); }
+.cert-verify:hover::after{ transform:scaleX(1); }
 
 @media (max-width:860px){
-  .project.layout-a,
-  .project.layout-b,
-  .project.layout-c{ grid-template-columns:minmax(0, 1fr); }
-  .project.layout-b .project-visual{ order:0; }
-  .project.layout-c .project-visual{ max-width:100%; }
-  .project-status{ margin-left:0; width:100%; }
+  .cert-item{
+    grid-template-columns:minmax(0, 1fr);
+    gap:var(--space-6);
+  }
 }
 
 /* ================= STACK ================= */
