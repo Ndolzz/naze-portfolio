@@ -33,12 +33,30 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/hero.css">
-<link rel="stylesheet" href="css/sections.css">
-<link rel="stylesheet" href="css/components.css">
-<link rel="stylesheet" href="css/motion.css">
+
+<!-- ========== STAGED RENDERING (HTML -> CSS -> JS) ==========
+     boot.css adalah satu-satunya stylesheet render-blocking.
+     Stylesheet desain di-prefetch dengan media="print" selama
+     fase 1 (HTML mentah terlihat), lalu diterapkan berurutan
+     oleh js/boot.js pada fase 2, dan JavaScript berjalan pada
+     fase 3. Tanpa JavaScript, blok noscript memuat CSS penuh. -->
+<link rel="stylesheet" href="css/boot.css">
+<script>document.documentElement.classList.add('boot-phase1');</script>
+<link rel="stylesheet" href="css/base.css" media="print" id="css-base">
+<link rel="stylesheet" href="css/layout.css" media="print" id="css-layout">
+<link rel="stylesheet" href="css/hero.css" media="print" id="css-hero">
+<link rel="stylesheet" href="css/sections.css" media="print" id="css-sections">
+<link rel="stylesheet" href="css/components.css" media="print" id="css-components">
+<link rel="stylesheet" href="css/motion.css" media="print" id="css-motion">
+<noscript>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/motion.css">
+  <style>.reveal{ opacity:1 !important; transform:none !important; filter:none !important; }</style>
+</noscript>
 </head>
 <body>
 
@@ -116,6 +134,12 @@
         <p>Aku Nendi, orang yang senang menulis kode dan mengubah ide menjadi software yang bisa dipakai.</p>
         <p>Dari aplikasi web sampai eksperimen AI, setiap proyek adalah bagian dari proses belajarku. Aku membuat, mencoba, lalu memperbaikinya sedikit demi sedikit.</p>
       </div>
+      <dl class="profile-facts reveal">
+        <div class="fact"><dt>NAMA</dt><dd>Nendi</dd></div>
+        <div class="fact"><dt>ALIAS</dt><dd>Naze / Ndolzz</dd></div>
+        <div class="fact"><dt>TEMPAT, TANGGAL LAHIR</dt><dd>Purbalingga, 22 September 2009</dd></div>
+        <div class="fact"><dt>FOKUS</dt><dd>Software Engineering</dd></div>
+      </dl>
       <div class="about-code reveal">
 <span class="kw">const</span> developer = {<br>
 &nbsp;&nbsp;name: <span class="str">"Nendi"</span>,<br>
@@ -314,12 +338,9 @@
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="js/config.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/typing.js"></script>
-<script src="js/stats.js"></script>
-<script src="js/animations.js"></script>
+<!-- Satu-satunya pemuat JavaScript: boot.js menjalankan GSAP,
+     ScrollTrigger, lalu config, ui, typing, stats, animations
+     secara berurutan pada fase 3. -->
+<script src="js/boot.js" defer></script>
 </body>
 </html>

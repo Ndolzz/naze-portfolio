@@ -1,0 +1,55 @@
+/* ============================================================
+   NAZE PORTFOLIO — boot.css
+   Staged rendering support (HTML -> CSS -> JavaScript).
+
+   This is the only render-blocking stylesheet. It keeps the
+   phase 1 document readable on the paper background (never a
+   white flash) and defines the phase 2 reveal transition into
+   the NAZE design. The design stylesheets themselves are
+   prefetched with media="print" and applied by js/boot.js.
+   ============================================================ */
+
+/* ================= PHASE 1 — raw document =================
+   Deliberately minimal: colors, one readable type stack, and
+   basic media behavior. No layout, no components. */
+html.boot-phase1 body{
+  margin:0;
+  background:#f7f6f2; /* var(--paper) of the design system */
+  color:#20231f;      /* var(--ink) */
+  font-family:Inter, "Helvetica Neue", Arial, sans-serif;
+  font-size:1rem;
+  line-height:1.6;
+  padding:24px clamp(20px, 5vw, 28px) 64px;
+}
+html.boot-phase1 img{ max-width:100%; height:auto; }
+html.boot-phase1 a{ color:inherit; text-decoration:none; }
+
+/* ================= PHASE 2 — the reveal =================
+   Applied the moment the design stylesheets are in. boot.js
+   then adds .boot-ready on the next frame, which transitions
+   the document into the NAZE design. */
+html.boot-phase2 body{
+  opacity:0;
+  transform:translateY(14px);
+  filter:blur(6px);
+}
+html.boot-phase2.boot-ready body{
+  opacity:1;
+  transform:none;
+  filter:blur(0);
+  transition:
+    opacity .9s cubic-bezier(.2, .7, .2, 1),
+    transform .9s cubic-bezier(.2, .7, .2, 1),
+    filter .9s cubic-bezier(.2, .7, .2, 1);
+}
+
+/* Reduced motion: no staged animation at all; js/boot.js also
+   short-circuits the phases in this case. */
+@media (prefers-reduced-motion: reduce){
+  html.boot-phase2 body{
+    opacity:1;
+    transform:none;
+    filter:none;
+    transition:none;
+  }
+}
