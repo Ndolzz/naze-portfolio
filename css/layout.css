@@ -1,0 +1,176 @@
+/* ============================================================
+   NAZE PORTFOLIO — layout.css
+   Navigation, section scaffolding, and shared typographic
+   primitives (kicker, display scale, accent word).
+   ============================================================ */
+
+/* ================= NAVBAR ================= */
+.navbar-wrap{
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  border-bottom:1px solid transparent;
+  background:transparent;
+  transition:background var(--t-normal), border-color var(--t-normal), box-shadow var(--t-normal);
+}
+.navbar-wrap.scrolled{
+  background:rgba(247,246,242,.9);
+  border-color:var(--line);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+.navbar{
+  pointer-events:auto;
+  width:100%;
+  max-width:var(--content-width);
+  margin:0 auto;
+  min-height:64px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 clamp(20px, 5vw, 28px);
+  transition:min-height var(--t-normal);
+}
+.navbar.scrolled{ min-height:56px; }
+
+.nav-logo{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:1.15rem;
+  letter-spacing:.01em;
+  display:flex; align-items:baseline; gap:8px;
+}
+.nav-logo span{
+  color:var(--muted);
+  font-family:var(--font-mono);
+  font-size:.62rem;
+  letter-spacing:.12em;
+}
+
+.nav-links{ display:flex; gap:26px; list-style:none; margin:0; padding:0; white-space:nowrap; }
+.nav-links a{
+  font-family:var(--font-mono);
+  font-size:.7rem;
+  letter-spacing:.14em;
+  color:var(--muted);
+  position:relative;
+  padding:4px 0;
+  transition:color var(--t-fast);
+}
+.nav-links a::after{
+  content:'';
+  position:absolute; left:0; bottom:0;
+  width:100%; height:1px;
+  background:var(--accent);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform var(--t-normal) var(--ease);
+}
+.nav-links a:hover,
+.nav-links a.active{ color:var(--ink); }
+.nav-links a:hover::after,
+.nav-links a.active::after{ transform:scaleX(1); }
+
+.nav-toggle{
+  display:none;
+  width:44px; height:40px;
+  background:transparent;
+  border:var(--border-strong);
+  border-radius:var(--radius-sm);
+  color:var(--ink);
+  font-family:var(--font-mono);
+  font-size:1rem;
+  line-height:1;
+  cursor:pointer;
+  transition:background var(--t-fast), border-color var(--t-fast);
+}
+.nav-toggle:hover{ border-color:var(--ink); }
+.nav-toggle:active{ background:var(--sunken); }
+
+@media (max-width:760px){
+  .nav-links{
+    position:fixed;
+    top:64px; left:0; right:0;
+    display:flex; flex-direction:column; align-items:stretch;
+    gap:0;
+    width:100%;
+    background:var(--paper);
+    border-bottom:var(--border);
+    padding:var(--space-2) 0 var(--space-3);
+    pointer-events:none;
+    opacity:0;
+    translate:0 -8px;
+    transition:opacity var(--t-normal), translate var(--t-normal) var(--ease);
+  }
+  .nav-links.open{ pointer-events:auto; opacity:1; translate:0 0; }
+  .nav-links li{ width:100%; }
+  .nav-links a{ display:block; font-size:.78rem; padding:13px clamp(20px,5vw,28px); }
+  .nav-links a::after{ display:none; }
+  .nav-links a:hover{ background:var(--sunken); }
+  .nav-toggle{ display:block; }
+}
+
+/* ================= SECTION SCAFFOLDING ================= */
+section{ position:relative; z-index:2; }
+
+.wrap{
+  max-width:var(--content-width);
+  margin:0 auto;
+  padding-inline:clamp(20px, 5vw, 28px);
+}
+
+.section-pad{
+  padding-block:clamp(72px, 11vw, 128px);
+  border-top:var(--border);
+}
+
+/* ================= KICKER ================= */
+.kicker{
+  font-family:var(--font-mono);
+  font-size:.68rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:inline-flex; align-items:center; gap:10px;
+  margin:0 0 var(--space-4);
+}
+.kicker::before{
+  content:'';
+  width:8px; height:8px;
+  border:1px solid var(--accent);
+  /* small technical square marker, no glow */
+}
+
+/* ================= DISPLAY SCALE ================= */
+.display-xl{
+  font-family:var(--font-display);
+  font-size:clamp(2.5rem, 7.2vw, 5.75rem);
+  line-height:1.02;
+  font-weight:560;
+  letter-spacing:-.015em;
+  margin:0;
+  text-wrap:balance;
+}
+.display-lg{
+  font-family:var(--font-display);
+  font-size:clamp(1.9rem, 4.6vw, 3.4rem);
+  line-height:1.08;
+  font-weight:560;
+  letter-spacing:-.01em;
+  margin:0;
+  text-wrap:balance;
+}
+@supports not (text-wrap:balance){
+  .display-xl, .display-lg{ text-wrap:wrap; }
+}
+
+/* accent word — replaces the old gradient text with a
+   single deliberate editorial device: cobalt italic serif */
+.grad-text{
+  font-style:italic;
+  font-weight:480;
+  color:var(--accent);
+}
+
+/* ================= REVEAL PRIMITIVE =================
+   Initial state for scroll reveals driven by js/animations.js;
+   final state (opacity 1, y 0, blur 0) is applied by GSAP,
+   with the html.no-gsap fallback in motion.css. */
+.reveal{ opacity:0; transform:translateY(28px); }
+.reveal.blur{ filter:blur(8px); }

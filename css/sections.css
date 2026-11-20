@@ -1,0 +1,292 @@
+/* ============================================================
+   NAZE PORTFOLIO — sections.css
+   About, certificate index, and stack list.
+   ============================================================ */
+
+/* ================= ABOUT ================= */
+.about-grid{
+  display:grid;
+  grid-template-columns:minmax(0, .9fr) minmax(0, 1.1fr);
+  gap:clamp(36px, 6vw, 72px);
+  align-items:center;
+}
+@media (max-width:900px){
+  .about-grid{ grid-template-columns:minmax(0, 1fr); }
+}
+
+.about-photo{
+  position:relative;
+  aspect-ratio:3 / 4;
+  overflow:hidden;
+  border-radius:var(--radius-sm);
+  background:var(--sunken);
+}
+.about-photo img{
+  width:100%; height:100%;
+  object-fit:cover;
+  object-position:center 20%;
+  filter:grayscale(.15);
+  transition:filter var(--t-slow);
+}
+.about-photo:hover img{ filter:grayscale(0); }
+.about-photo .frame-label{
+  position:absolute; bottom:14px; left:14px; z-index:3;
+  font-family:var(--font-mono);
+  font-size:.62rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--paper);
+  background:rgba(27,29,24,.72);
+  padding:6px 10px;
+  border-radius:var(--radius-sm);
+}
+
+.about-grid .display-lg{ margin-bottom:var(--space-6); }
+
+.about-copy p{
+  font-size:1.02rem;
+  line-height:1.8;
+  color:var(--muted);
+  max-width:min(56ch, 100%);
+  margin:0 0 var(--space-4);
+  text-wrap:pretty;
+}
+.about-copy p:last-child{ margin-bottom:0; }
+
+/* profile facts — editorial data rows, consistent with the
+   credential plates and the mono label style of the site */
+.profile-facts{
+  margin:var(--space-8) 0 0;
+  padding:0;
+  border-top:var(--border);
+}
+.profile-facts .fact{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:var(--space-4);
+  padding:var(--space-3) 2px;
+  border-bottom:var(--border);
+}
+.profile-facts dt{
+  font-family:var(--font-mono);
+  font-size:.62rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--faint);
+  white-space:nowrap;
+}
+.profile-facts dd{
+  margin:0;
+  font-size:.95rem;
+  color:var(--ink);
+  text-align:right;
+  min-width:0;
+}
+@media (max-width:520px){
+  .profile-facts .fact{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:2px;
+  }
+  .profile-facts dd{ text-align:left; }
+}
+
+/* code block on paper — syntax colors muted into the palette */
+.about-code{
+  margin-top:var(--space-8);
+  font-family:var(--font-mono);
+  font-size:.78rem;
+  line-height:1.75;
+  color:var(--ink-soft);
+  background:var(--surface);
+  border:var(--border);
+  border-radius:var(--radius-md);
+  padding:20px 22px;
+  overflow-x:auto;
+}
+.about-code .kw{ color:var(--accent); }
+.about-code .str{ color:var(--success); }
+.about-code .com{ color:var(--faint); font-style:italic; }
+
+/* ================= CERTIFICATES ================= */
+/* Editorial credential index: course summary on the left, a compact
+   credential plate on the right. Verification data is real and links
+   to the issuer's public certificate page. */
+
+.cert-title{ margin-bottom:clamp(40px, 6vw, 64px); }
+
+.cert-list{ display:flex; flex-direction:column; }
+
+.cert-item{
+  display:grid;
+  grid-template-columns:minmax(0, 1.6fr) minmax(0, 1fr);
+  gap:clamp(24px, 4vw, 56px);
+  padding:clamp(36px, 5vw, 56px) 0;
+  border-top:var(--border);
+  align-items:start;
+}
+.cert-item:last-child{ border-bottom:var(--border); }
+
+.cert-head{
+  display:flex; align-items:baseline; gap:var(--space-4);
+  margin-bottom:var(--space-4);
+}
+.cert-num{
+  font-family:var(--font-mono);
+  font-size:.8rem;
+  color:var(--accent);
+  letter-spacing:.06em;
+}
+.cert-num::after{ content:' /'; color:var(--faint); }
+.cert-cat{
+  font-family:var(--font-mono);
+  font-size:.66rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.cert-name{
+  font-family:var(--font-display);
+  font-size:clamp(1.5rem, 3vw, 2.2rem);
+  font-weight:560;
+  letter-spacing:-.01em;
+  line-height:1.12;
+  margin:0 0 var(--space-3);
+  text-wrap:balance;
+}
+
+.cert-desc{
+  color:var(--muted);
+  line-height:1.75;
+  max-width:min(58ch, 100%);
+  margin:0 0 var(--space-5);
+  text-wrap:pretty;
+}
+
+.cert-meta{ display:flex; flex-wrap:wrap; gap:8px; }
+.cert-item:hover .chip{ border-color:var(--line-strong); color:var(--ink-soft); }
+
+/* credential plate — light technical panel with registration corners */
+.cert-credential{
+  position:relative;
+  border:var(--border-strong);
+  border-radius:var(--radius-md);
+  background:var(--surface);
+  padding:clamp(20px, 3vw, 28px);
+  display:flex; flex-direction:column; gap:var(--space-3);
+  min-width:0;
+  transition:border-color var(--t-normal), box-shadow var(--t-normal);
+}
+.cert-item:hover .cert-credential{
+  border-color:var(--accent);
+  box-shadow:var(--shadow-soft);
+}
+.cert-credential::before,
+.cert-credential::after{
+  content:'';
+  position:absolute;
+  width:10px; height:10px;
+  border-color:var(--faint);
+  border-style:solid;
+  opacity:.7;
+}
+.cert-credential::before{ top:8px; left:8px; border-width:1px 0 0 1px; }
+.cert-credential::after{ bottom:8px; right:8px; border-width:0 1px 1px 0; }
+
+.cred-label{
+  font-size:.6rem;
+  letter-spacing:.16em;
+  color:var(--faint);
+}
+.cred-id{
+  font-size:1rem;
+  font-weight:600;
+  color:var(--accent);
+  letter-spacing:.08em;
+  overflow-wrap:anywhere;
+}
+
+.cred-rows{
+  margin:var(--space-2) 0 0;
+  display:flex; flex-direction:column; gap:6px;
+  font-size:.68rem;
+}
+.cred-rows div{
+  display:flex;
+  justify-content:space-between;
+  gap:var(--space-4);
+}
+.cred-rows dt{ color:var(--faint); letter-spacing:.1em; }
+.cred-rows dd{ margin:0; color:var(--ink-soft); letter-spacing:.04em; text-align:right; }
+
+.cert-verify{
+  margin-top:var(--space-3);
+  align-self:flex-start;
+  font-family:var(--font-mono);
+  font-size:.72rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink);
+  position:relative;
+  padding-bottom:3px;
+  transition:color var(--t-fast);
+}
+.cert-verify::after{
+  content:'';
+  position:absolute; left:0; bottom:0;
+  width:100%; height:1px;
+  background:var(--accent);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform var(--t-normal) var(--ease);
+}
+.cert-verify:hover{ color:var(--accent); }
+.cert-verify:hover::after{ transform:scaleX(1); }
+
+@media (max-width:860px){
+  .cert-item{
+    grid-template-columns:minmax(0, 1fr);
+    gap:var(--space-6);
+  }
+}
+
+/* ================= STACK ================= */
+#stack .display-lg{ margin-bottom:clamp(36px, 5vw, 52px); }
+
+.stack-list{ display:flex; flex-direction:column; }
+.stack-item{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:var(--space-4);
+  padding:var(--space-4) 4px;
+  border-bottom:var(--border);
+  transition:padding var(--t-normal) var(--ease);
+}
+.stack-item:first-child{ border-top:var(--border); }
+.stack-item .name{
+  font-family:var(--font-display);
+  font-size:clamp(1.3rem, 3.4vw, 2rem);
+  font-weight:480;
+  color:var(--muted);
+  min-width:0;
+  transition:color var(--t-fast);
+}
+.stack-item .role{
+  font-family:var(--font-mono);
+  font-size:.64rem;
+  letter-spacing:.16em;
+  color:var(--accent);
+  opacity:0;
+  transition:opacity var(--t-normal);
+}
+.stack-item:hover{ padding-left:var(--space-4); }
+.stack-item:hover .name{ color:var(--ink); }
+.stack-item:hover .role{ opacity:1; }
+
+/* Blok topik teks (AI, Coding, Content, NAZE, Projects, Journey) */
+.topic-block .display-lg{ margin-bottom:var(--space-6); }
+.topic-block .about-copy{ max-width:720px; }
+.topic-block .proj-cats{ margin-top:var(--space-6); }
